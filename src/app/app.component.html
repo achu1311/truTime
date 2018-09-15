@@ -1,0 +1,53 @@
+<br><br><br><br>
+<div class="navbar_foot navbar-default navbar-fixed-bottom">
+
+
+        <form class="navbar-form navbar-middle">
+            <div class="form-group">
+                <div class="row featurette">
+                    <div class="col-md-3">
+                        <input class="form-control input-lg" (click)='calculate()' type ='number' [(ngModel)]="number1"
+                            value="" placeholder="Monday" [ngModelOptions]="{standalone: true}">
+
+                    </div>
+                    <div class="col-md-3 ">
+                        <input class="form-control input-lg" (click)='calculate()' type="number" id="number2"
+                            value="" placeholder="Tuesday" [(ngModel)]="number2" [ngModelOptions]="{standalone: true}">
+
+                    </div>
+
+                    <div class="col-md-3 ">
+                        <input class="form-control input-lg" type="number" (click)='calculate()' id="number3"
+                            value="" placeholder="Wednesday" [(ngModel)]="number3" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-3 ">
+                        <input class="form-control input-lg" type="number" (click)='calculate()' id="number4"
+                            value="" placeholder="Thursday" [(ngModel)]="number4" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <br><br><br>
+                    <div class="col-md-3 ">
+                        <input class="form-control input-lg" type="number" (click)='calculate()' id="number5"
+                            value="" placeholder="Friday" [(ngModel)]="number5" [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                    <div class="col-md-3 ">
+                        <button type="button" class="btn btn-primary btn-lg">                  
+                          calculate                           
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </form>
+<div *ngIf="time">
+
+        {{time}}
+      </div>
+    </div>
+           
