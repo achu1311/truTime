@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/dist/trutimeapplication/src'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/src/trutimeapplication/index.html'));
+res.sendFile(path.join(__dirname+'/dist/trutimeapplication/src/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
