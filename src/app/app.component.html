@@ -6,27 +6,27 @@
             <div class="form-group">
                 <div class="row featurette">
                     <div class="col-md-3">
-                        <input class="form-control input-lg" (keyup)="onKey($event)" type ='number' [(ngModel)]="number1"
+                        <input class="form-control input-lg" (keyup)="onKey($event,1)" type ='number' [(ngModel)]="number1"
                             value="" placeholder="Monday" [ngModelOptions]="{standalone: true}">
 
                     </div>
                     <div class="col-md-3 ">
-                        <input class="form-control input-lg" (keyup)="onKey($event)" type="number" id="number2"
+                        <input class="form-control input-lg" (keyup)="onKey($event,2)" type="number" id="number2"
                             value="" placeholder="Tuesday" [(ngModel)]="number2" [ngModelOptions]="{standalone: true}">
 
                     </div>
 
                     <div class="col-md-3 ">
-                        <input class="form-control input-lg" type="number" (keyup)="onKey($event)"  id="number3"
+                        <input class="form-control input-lg" type="number" (keyup)="onKey($event,3)"  id="number3"
                             value="" placeholder="Wednesday" [(ngModel)]="number3" [ngModelOptions]="{standalone: true}">
                     </div>
                     <div class="col-md-3 ">
-                        <input class="form-control input-lg" type="number" (keyup)="onKey($event)"  id="number4"
+                        <input class="form-control input-lg" type="number" (keyup)="onKey($event,4)"  id="number4"
                             value="" placeholder="Thursday" [(ngModel)]="number4" [ngModelOptions]="{standalone: true}">
                     </div>
                     <br><br><br>
                     <div class="col-md-3 ">
-                        <input class="form-control input-lg" type="number" (keyup)="onKey($event)"  id="number5"
+                        <input class="form-control input-lg" type="number" (keyup)="onKey($event,5)"  id="number5"
                             value="" placeholder="Friday" [(ngModel)]="number5" [ngModelOptions]="{standalone: true}">
                     </div>
 
