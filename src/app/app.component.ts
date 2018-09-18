@@ -77,6 +77,7 @@ export class AppComponent {
     }
     else if (this.count > 0) {
       // this.count=;
+      console.log('before this.split final',this.split_time);
       this.split_time=parseFloat((this.split_time / (5 - this.count)).toFixed(2))
       this.time = 'please stay for ' + (this.split_time );
     }
