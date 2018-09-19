@@ -61,22 +61,19 @@ export class AppComponent {
     }
     console.log('finaltime', this.split_time, 'count', this.count);
     if(this.count===5){
-      if(this.split_time===0 ){
+      if(this.split_time===0 && this.minutes===0){
         this.time = 'CONGRATULATIONS!!!You have completed your quota for the week.';
       }
-      else if(this.split_time<0 ){
+      else if(this.split_time===0 &&this.minutes>0 ){
         this.time = 'You have stayed enough. Please take a break from work';
       }else {
         this.split_time=parseFloat(this.split_time.toFixed(2));
-        this.split_time =
-        [
-          (this.split_time > 0) ? Math.floor(this.split_time) : Math.ceil(this.split_time),
-          100-Math.floor((this.split_time % 1) * 100)
-        ]
-
-        this.time='You have to work hard. You have to stay for additional '+this.split_time[0]+' hours ';
-        if(this.split_time[1]<59){
-          this.time+=this.split_time[1]+' minutes';
+        let stayingHours=this.split_time-1;
+        let stayingMinutes=this.minutes;
+        this.time='You have to work hard. You have to stay for additional '+stayingHours+' hours ';
+      
+        if(stayingMinutes<60){
+          this.time+=stayingMinutes+' minutes';
         }
       }
     }
@@ -99,7 +96,7 @@ export class AppComponent {
         stayingMinutes=0;
         console.log('staying minutes',stayingHours);
       }
-      if(totalWorkingHours>(9*this.count)){
+      else if(totalWorkingHours>(9*this.count)){
         console.log('worked more',this.split_time,' ',this.minutes,' ',completedMinutes);
         stayingHours=(this.split_time-1)/(5-this.count);
         if(completedMinutes>0)
