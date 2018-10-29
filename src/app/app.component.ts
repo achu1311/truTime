@@ -14,16 +14,12 @@ export class AppComponent {
   number5;
   time;
   count:number = 0;
-  hours: number = 0;
   minutes: number = 0;
-  split_time;
   onKey(event: any) { 
     this.calculate();
     console.log('inside onkey,id:');
   }
   calculate() {
-    // if(this.number1){
-    this.hours=0;
     this.minutes=0;
     this.count=0;
     if (this.number1) {
@@ -44,97 +40,32 @@ export class AppComponent {
       this.addTime(this.number5);
       // console.log(this.number5);
     }
-    // console.log(this.minutes/60);
-    this.hours+=Math.floor(this.minutes/60);
-   
-    this.minutes = parseInt((this.minutes % 60).toFixed(0));
-    let completedMinutes=this.minutes;
-    console.log('time', this.hours, '  ', this.minutes.toFixed(0));
-
-    this.split_time = (45 - (this.hours));
-    console.log('time2', this.split_time, ' ', this.hours, '  ', this.minutes);
-    if (this.minutes > 0) {
-      this.minutes=60-this.minutes;
-      //cutrrent 
-      // this.split_time -= (0.60 - (this.minutes / 100));
-      console.log('time3', this.split_time, ' ', this.hours, '  ', this.minutes);
-    }
-    console.log('finaltime', this.split_time, 'count', this.count);
     if(this.count===5){
-      if(this.split_time===0 && this.minutes===0){
+      console.log('final',this.minutes);
+      if(this.minutes===2700){
         this.time = 'CONGRATULATIONS!!!You have completed your quota for the week.';
       }
-      else if(this.split_time===0 &&this.minutes>0 ){
-        this.time = 'You have stayed enough. Please take a break from work';
+      else if(this.minutes>2700){
+        this.time = 'You have stayed enough. You can take a break from work';
       }else {
-        this.split_time=parseFloat(this.split_time.toFixed(2));
-        let stayingHours=this.split_time-1;
-        let stayingMinutes=this.minutes;
-        this.time='You have to work hard. You have to stay for additional '+stayingHours+' hours ';
-      
-        if(stayingMinutes<60){
-          this.time+=stayingMinutes+' minutes';
+        let rmins=2700-this.minutes;
+        let stayhrs=rmins/60;
+        this.time='You have to work hard. Please stay for additional' ;
+        if(stayhrs>0){
+          this.time+=Math.floor(stayhrs)+' hours '
+        }
+        let stayMin=rmins%60;
+        if(stayMin>0){
+          this.time+=stayMin+' minutes';
         }
       }
     }
     else if (this.count > 0) {
-      // this.count=;
-      console.log('before this.split final',this.split_time);
- //current
-      // let temp=100-((this.split_time % 1)*100);
-      let temp=this.minutes;
-      console.log('temp',temp);
-      let totalWorkingHours;
-      let stayingMinutes,stayingHours;
-      if(temp>=0){
-        totalWorkingHours=45-this.split_time+(completedMinutes/100)
-      }
-      console.log('total working hours',totalWorkingHours);
-      if(totalWorkingHours===(9*this.count)){
-        console.log('exact',this.split_time,' ',this.minutes,' ',completedMinutes);
-        stayingHours=(this.split_time)/(5-this.count);
-        stayingMinutes=0;
-        console.log('staying minutes',stayingHours);
-      }
-      else if(totalWorkingHours>(9*this.count)){
-        console.log('worked more',this.split_time,' ',this.minutes,' ',completedMinutes);
-        stayingHours=(this.split_time-1)/(5-this.count);
-        if(completedMinutes>0)
-        stayingMinutes=60-(completedMinutes/(5-this.count));
-        console.log('staying minutes',stayingHours,' ',stayingMinutes);
-
-      }
-      else{
-        
-        console.log('less',this.split_time,' ',this.minutes,' ',completedMinutes);
-        stayingHours=(this.split_time-1)/(5-this.count);
-        if(this.minutes>0)
-        stayingMinutes=this.minutes/(5-this.count);
-        console.log('staying minutes',stayingHours,' ',stayingMinutes);
-      }
-      // if(temp<60){
-        //current
-        // this.split_time=Math.floor(this.split_time)+(temp/100)-Math.floor((this.split_time % 1))
-      // }
-     
-     
-      // console.log('temp2',this.split_time,' ',this.minutes,' ',completedMinutes);
-      
-      // this.split_time=parseFloat((this.split_time-(this.minutes/100)).toFixed(2))
-      // if(completedMinutes>0)
-      // this.split_time=(this.split_time-1)/(5-this.count);
-      
-      // this.minutes=60-((completedMinutes)/(5-this.count));
-      // console.log('before this.split final2',this.split_time,' ',this.minutes);
-
-      // this.split_time=parseFloat((this.split_time / (5 - this.count)).toFixed(2))
-      
-      
-
-      // console.log('before this.split final3',this.split_time);
-
-      // this.time = 'please stay for ' + (this.split_time[0] )+' '+this.split_time[1];
-            this.time = 'Please maintain average of ' + Math.floor(stayingHours)+' Hours '+Math.floor(stayingMinutes)+' Minutes';
+      let rmins=2700-this.minutes;
+      rmins=rmins/(5-this.count);
+      let stayhrs=rmins/60;
+      let stayMin=rmins%60;
+      this.time = 'Please maintain average of ' + Math.floor(stayhrs)+' Hours '+Math.floor(stayMin)+' Minutes';
     }
 
 
@@ -145,19 +76,15 @@ export class AppComponent {
     if (typeof number === 'number' && number>0) {
       console.log('type number', typeof number, this.count);
       this.count++;
-      this.split_time =
+      let split_time =
         [
           (number > 0) ? Math.floor(number) : Math.ceil(number),
           (number % 1) * 100
-        ]
-      console.log('split_time', this.split_time);
-      this.hours += this.split_time[0];
-      console.log('hours', this.hours);
-      if (this.split_time[1] > 0)
-      {
-        this.minutes += parseInt(this.split_time[1].toFixed(0))
-      }
-        
+        ];
+        let min=(number-split_time[0])*100;
+        let hrs=split_time[0];
+      console.log('split_time',split_time,'  minutes ',min);
+        this.minutes+=(hrs*60)+min;
       console.log('minutes', this.minutes);
     }
   
