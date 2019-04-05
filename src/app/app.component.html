@@ -1,54 +1,57 @@
-<br><br><br><br>
+<mat-toolbar color="primary">
+    <span>TruTime Calculator</span>
+</mat-toolbar>
 <div class="navbar_foot navbar-default navbar-fixed-bottom">
+    <br><br><br><br>
+    Please enter your total time per day in (H.M) format. Eg(if you stayed for 9 hrs 30 mins, enter 9.30)
+    <br><br>
 
+    <form class="navbar-form navbar-middle">
+        <div class="form-group">
+            <div class="row featurette">
+                <!-- (keyup)="onKey($event) -->
+                <div class="col-md-3">
+                    <input class="form-control input-lg" (focus)="onKey($event)" type='number' [(ngModel)]="number1"
+                        value="" placeholder="Monday" [ngModelOptions]="{standalone: true}">
 
-        <form class="navbar-form navbar-middle">
-            <div class="form-group">
-                <div class="row featurette">
-                    <!-- (keyup)="onKey($event) -->
-                    <div class="col-md-3">
-                        <input class="form-control input-lg" (focus)="onKey()" type ='number' [(ngModel)]="number1"
-                            value="" placeholder="Monday" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col-md-3 ">
+                    <input class="form-control input-lg" (focus)="onKey($event)" type="number" id="number2" value=""
+                        placeholder="Tuesday" [(ngModel)]="number2" [ngModelOptions]="{standalone: true}">
 
-                    </div>
-                    <div class="col-md-3 ">
-                        <input class="form-control input-lg" (focus)="onKey()" type="number" id="number2"
-                            value="" placeholder="Tuesday" [(ngModel)]="number2" [ngModelOptions]="{standalone: true}">
+                </div>
 
-                    </div>
+                <div class="col-md-3 ">
+                    <input class="form-control input-lg" type="number" (focus)="onKey($event)" id="number3" value=""
+                        placeholder="Wednesday" [(ngModel)]="number3" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col-md-3 ">
+                    <input class="form-control input-lg" type="number" (focus)="onKey($event)" id="number4" value=""
+                        placeholder="Thursday" [(ngModel)]="number4" [ngModelOptions]="{standalone: true}">
+                </div>
+                <br><br><br>
+                <div class="col-md-3 ">
+                    <input class="form-control input-lg" type="number" (focus)="onKey($event)" id="number5" value=""
+                        placeholder="Friday" [(ngModel)]="number5" [ngModelOptions]="{standalone: true}">
+                </div>
 
-                    <div class="col-md-3 ">
-                        <input class="form-control input-lg" type="number" (focus)="onKey($event)"  id="number3"
-                            value="" placeholder="Wednesday" [(ngModel)]="number3" [ngModelOptions]="{standalone: true}">
-                    </div>
-                    <div class="col-md-3 ">
-                        <input class="form-control input-lg" type="number" (focus)="onKey($event)"  id="number4"
-                            value="" placeholder="Thursday" [(ngModel)]="number4" [ngModelOptions]="{standalone: true}">
-                    </div>
-                    <br><br><br>
-                    <div class="col-md-3 ">
-                        <input class="form-control input-lg" type="number" (focus)="onKey($event)"  id="number5"
-                            value="" placeholder="Friday" [(ngModel)]="number5" [ngModelOptions]="{standalone: true}">
-                    </div>
-
-                    <div class="col-md-3 ">
-                        <button type="button" class="btn btn-primary btn-lg" (keyup)="onKey($event)" >                  
-                          calculate                           
-                        </button>
-
-
-                    </div>
+                <div class="col-md-3 ">
+                    <button type="button" class="btn btn-primary btn-lg" (keyup)="onKey($event)">
+                        calculate
+                    </button>
 
 
                 </div>
 
 
-
             </div>
-        </form>
-<div *ngIf="time">
+
+
+
+        </div>
+    </form>
+    <div *ngIf="time">
 
         {{time}}
-      </div>
     </div>
-           
+</div>
