@@ -17,7 +17,7 @@ export class AppComponent {
   minutes: number = 0;
   onKey(event: any) {
     this.calculate();
-    console.log('inside onkey,id:');
+    // console.log('inside onkey,id:');
   }
   calculate() {
     this.minutes = 0;
@@ -25,7 +25,7 @@ export class AppComponent {
     if (this.number1) {
 
       this.addTime(this.number1);
-      // console.log(this.number1);
+      // // console.log(this.number1);
     }
     if (this.number2) {
       this.addTime(this.number2);
@@ -41,7 +41,7 @@ export class AppComponent {
       // console.log(this.number5);
     }
     if (this.count === 5) {
-      console.log('final', this.minutes);
+      // console.log('final', this.minutes);
       if (this.minutes === 2700) {
         this.time = 'CONGRATULATIONS!!!You have completed your quota for the week.';
       }
@@ -65,16 +65,16 @@ export class AppComponent {
       rmins = rmins / (5 - this.count);
       let stayhrs = rmins / 60;
       let stayMin = rmins % 60;
-      this.time = 'Please maintain average of ' + Math.floor(stayhrs) + ' Hours ' + Math.floor(stayMin) + ' Minutes';
+      this.time = 'Please maintain average of ' + Math.floor(stayhrs) + ' Hours ' + Math.floor(stayMin) + ' Minutes' + ' for '+(5-this.count)+' days';
     }
 
 
 
   }
   addTime(number) {
+      // console.log('type number', typeof number, this.count);
 
     if (typeof number === 'number' && number > 0) {
-      console.log('type number', typeof number, this.count);
       this.count++;
       let split_time =
         [
@@ -82,13 +82,18 @@ export class AppComponent {
           (number % 1) * 100
         ];
       let min = (number - split_time[0]) * 100;
-      let hrs = split_time[0];
-      console.log('split_time', split_time, '  minutes ', min);
+      min=(min>60 || min <0)?0:min;
+      let hrs=(split_time[0]<0||split_time[0]>24)?0:split_time[0];
+      // let hrs = split_time[0];
+      // console.log("hrs",hrs,'split_time', split_time, '  minutes ', min,this.minutes);
+
+      if(hrs===0 && min===0){
+        this.count--;
+        return ;
+      }
       this.minutes += (hrs * 60) + min;
-      console.log('minutes', this.minutes);
+      // console.log('minutes', this.minutes);
     }
-
-
 
   }
 

@@ -15,7 +15,7 @@
                         value="" placeholder="Monday" [ngModelOptions]="{standalone: true}">
 
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-3">
                     <input class="form-control input-lg" (focus)="onKey($event)" type="number" id="number2" value=""
                         placeholder="Tuesday" [(ngModel)]="number2" [ngModelOptions]="{standalone: true}">
 
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="col-md-3 ">
-                    <button type="button" class="btn btn-primary btn-lg" (keyup)="onKey($event)">
+                    <button type="button" class="btn btn-primary btn-lg" (click)="onKey($event)">
                         calculate
                     </button>
 
